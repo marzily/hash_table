@@ -1,9 +1,14 @@
 class OurHashMap
-  attr_reader :hash_arr, :hash_size
+  attr_accessor :hash_arr, :hash_size
 
   def initialize
     @hash_arr = []
     @hash_size = 11
+  end
+
+  def put(key, value)
+    i = key.hash % hash_size
+    hash_arr[i] = [key, value]
   end
 
   # def get(key)
@@ -11,10 +16,7 @@ class OurHashMap
   #   @values[i.hash]
   # end
   #
-  # def put(key, value)
-  #   @values[key.hash % @values.size] = value
-  #
-  # end
+
 
 end
 

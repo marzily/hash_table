@@ -15,12 +15,10 @@ class OurHashMapTest < Minitest::Test
 
   def test_container_initiated_to_size
     assert_equal 11, @hash_map.hash_size
-
   end
 
   def test_hash_arr_accepts_entries
-    skip
-
+    assert_equal ['first_name', 'Margie'], @hash_map.put('first_name', 'Margie')
   end
 
 
