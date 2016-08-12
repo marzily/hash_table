@@ -1,12 +1,21 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './hash_table'
+require './our_hash_map'
 
 class OurHashMapTest < Minitest::Test
 
   def setup
-    hash_table = OurHashMap.new
+    @hash_map = OurHashMap.new
+  end
+
+  def test_it_has_a_container_for_entries
+    assert_equal Array, @hash_map.hash_arr.class
+  end
+
+  def test_hash_arr_accepts_entries
+    skip
+
   end
 
 
