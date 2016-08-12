@@ -13,6 +13,11 @@ class OurHashMapTest < Minitest::Test
     assert_equal Array, @hash_map.hash_arr.class
   end
 
+  def test_container_initiated_to_size
+    assert_equal 11, @hash_map.hash_size
+
+  end
+
   def test_hash_arr_accepts_entries
     skip
 

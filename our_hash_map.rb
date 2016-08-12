@@ -1,8 +1,9 @@
 class OurHashMap
-  attr_reader :hash_arr
+  attr_reader :hash_arr, :hash_size
 
   def initialize
     @hash_arr = []
+    @hash_size = 11
   end
 
   # def get(key)
