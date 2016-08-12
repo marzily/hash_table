@@ -7,21 +7,27 @@ class OurHashMap
   end
 
   def put(key, value)
-    i = key.hash % hash_size
+    i = index(key)
     hash_arr[i] = [key, value]
   end
 
-  # def get(key)
-  #   i = @keys.index(key)
-  #   @values[i.hash]
-  # end
-  #
+  def get(key)
+    i = index(key)
+    hash_arr.each do |k, v|
+      if k == key
+        return v
+      end
+    end
+    nil
+  end
 
-
+  def index(key)
+    key.hash % hash_size
+  end
 end
 
 
-# hash = OurHashMap.new
-#
-# hash.put("first_name", "Nick")
-# puts "Nick" == hash.get("first_name")
+hash = OurHashMap.new
+
+hash.put("first_name", "Nick")
+puts "Nick" == hash.get("first_name")
