@@ -23,9 +23,7 @@ class OurHashMapTest < Minitest::Test
 
   def test_hash_arr_returns_val_at_key
     @hash_map.put('first_name', 'Margie')
-    
+
     assert_equal 'Margie', @hash_map.get('first_name')
   end
-
-
 end
