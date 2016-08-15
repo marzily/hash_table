@@ -1,14 +1,16 @@
+gem 'byebug'
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './our_hash_map'
+require 'byebug'
 
 class OurHashMapTest < Minitest::Test
 
   def setup
     @hash_map = OurHashMap.new
   end
-
+  
   def test_it_has_a_container_for_entries
     assert_equal Array, @hash_map.hash_arr.class
   end
@@ -25,5 +27,11 @@ class OurHashMapTest < Minitest::Test
     @hash_map.put('first_name', 'Margie')
 
     assert_equal 'Margie', @hash_map.get('first_name')
+  end
+
+  def test_hash_size_increases
+    5.times { |i| @hash_map.put("key#{i}", "value#{i}") }
+
+    assert_equal 22, @hash_map.hash_size
   end
 end
