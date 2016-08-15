@@ -10,9 +10,8 @@ class OurHashMap
 
   def put(key, value)
       if hash_arr.count != 0 && increase_size?
-
         expand_hash
-        # increase_size of Array
+
         # reindex every item
         # add new item
       else
@@ -34,7 +33,6 @@ class OurHashMap
     end
 
     def increase_size?
-      # byebug
       hash_arr.compact.count % 5 == 0
     end
 

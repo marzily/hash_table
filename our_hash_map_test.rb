@@ -30,7 +30,7 @@ class OurHashMapTest < Minitest::Test
   end
 
   def test_hash_size_increases
-    5.times { |i| @hash_map.put("key#{i}", "value#{i}") }
+    6.times { |i| @hash_map.put("key#{i}", "value#{i}") }
 
     assert_equal 22, @hash_map.hash_size
   end
