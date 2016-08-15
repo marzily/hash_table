@@ -1,4 +1,3 @@
-
 require 'byebug'
 
 class OurHashMap
@@ -35,7 +34,7 @@ class OurHashMap
     end
 
     def increase_size?
-      byebug
+      # byebug
       hash_arr.compact.count % 5 == 0
     end
 
