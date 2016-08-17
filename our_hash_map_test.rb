@@ -29,8 +29,8 @@ class OurHashMapTest < Minitest::Test
     assert_equal 'Margie', @hash_map.get('first_name')
   end
 
-  def test_hash_size_increases
-    6.times { |i| @hash_map.put("key#{i}", "value#{i}") }
+  def test_hash_size_grows_when_hash_almost_half_full
+    5.times { |i| @hash_map.hash_arr << ["key#{i}", "value#{i}"] }
 
     assert_equal 22, @hash_map.hash_size
   end
