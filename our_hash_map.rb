@@ -1,16 +1,19 @@
 require 'byebug'
 
 class OurHashMap
-  attr_accessor :hash_arr, :hash_size
+  attr_accessor :buckets, :hash_size
 
   def initialize
-    @hash_arr = []
+    @buckets = []
     @hash_size = 11
   end
 
   def put(key, value)
-    if increase_size?
-      resize_hash
+    if threshold?
+      increase_size
+      rehash
+    elsif shrink?
+      decrease_size
       rehash
     end
 
@@ -19,7 +22,7 @@ class OurHashMap
 
   def get(key)
     i = index(key)
-    hash_arr[i].last
+    buckets[i].last
   end
 
   private
@@ -28,24 +31,39 @@ class OurHashMap
       key.hash % hash_size
     end
 
-    def increase_size?
-      hash_size / 2 == hash_arr.compact.count / 2
+# checks if num of buckets about half full
+    def threshold?
+      hash_size / 2 == buckets.compact.count / 2
     end
 
-    def resize_hash
+# grow size of buckets after meeting size threshold
+    def increase_size
       hash_size *= 2
     end
 
+# insert new key, val into buckets
     def insert(key, value)
       i = index(key)
-      hash_arr[i] = [key, value]
+      buckets[i] = [key, value]
     end
 
+# rehash all key, val pairs after increasing hash_size
     def rehash
-      hash_arr.compact.each do |key, value|
+      buckets.compact.each do |key, value|
         insert(key, value)
       end
     end
+
+# checks if need to shrink hash_size
+    def shrink?
+      hash_size / 4 == buckets.compact.count / 4
+    end
+
+# shrinks hash_size
+    def decrease_size
+      hash_size /= 2
+    end
+
 end
 
 
