@@ -10,7 +10,8 @@ class OurHashMap
 
   def put(key, value)
     if increase_size?
-      expand
+      resize_hash
+      rehash
     end
 
     insert(key, value)
@@ -31,13 +32,19 @@ class OurHashMap
       hash_size / 2 == hash_arr.compact.count / 2
     end
 
-    def expand
+    def resize_hash
       hash_size *= 2
     end
 
     def insert(key, value)
       i = index(key)
       hash_arr[i] = [key, value]
+    end
+
+    def rehash
+      hash_arr.compact.each do |key, value|
+        insert(key, value)
+      end
     end
 end
 
