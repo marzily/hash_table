@@ -25,6 +25,11 @@ class OurHashMap
     buckets[i].last
   end
 
+  def delete(key)
+    i = index(key)
+    buckets.delete(i)
+  end
+
   private
 
     def index(key)
