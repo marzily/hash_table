@@ -11,10 +11,9 @@ class OurHashMap
   def put(key, value)
     if increase_size?
       expand
-    else
-      i = index(key)
-      hash_arr[i] = [key, value]
     end
+
+    insert(key, value)
   end
 
   def get(key)
@@ -29,11 +28,16 @@ class OurHashMap
     end
 
     def increase_size?
-      @hash_size / 2 == @hash_arr.compact.count / 2
+      hash_size / 2 == hash_arr.compact.count / 2
     end
 
     def expand
-      @hash_size += 11
+      hash_size *= 2
+    end
+
+    def insert(key, value)
+      i = index(key)
+      hash_arr[i] = [key, value]
     end
 end
 
