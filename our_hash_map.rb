@@ -22,8 +22,10 @@ class OurHashMap
 
   def get(key)
     i = index(key)
-    if buckets[i]
-      buckets[i].last
+    pair = buckets[i]
+
+    if pair
+      pair.last
     end
   end
 
