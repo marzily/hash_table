@@ -22,12 +22,14 @@ class OurHashMap
 
   def get(key)
     i = index(key)
-    buckets[i].last
+    if buckets[i]
+      buckets[i].last
+    end
   end
 
   def delete(key)
     i = index(key)
-    buckets.delete(i)
+    buckets.delete_at(i)
   end
 
   private
